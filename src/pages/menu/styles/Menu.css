@@ -1,0 +1,76 @@
+.menu-container {
+    display: flex;
+    height: 100vh;
+    /* Para garantir que a barra lateral ocupe toda a altura da tela */
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    /* Para garantir que a barra lateral esteja acima de outros elementos */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 15px 10px;
+    border-bottom: 1px solid #444;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar li:hover {
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+}
+
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.status-ball {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    /* ou green, dependendo do estado */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f4f4f4;
+}

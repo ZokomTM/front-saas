@@ -1,0 +1,62 @@
+/* Register.css */
+
+/* Variáveis */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --secondary-color-dark: #27ae60;
+    /* Add a darker shade for hover */
+    --font-family: 'Arial, sans-serif';
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos base */
+body {
+    font-family: var(--font-family);
+    color: var(--primary-color);
+}
+
+/* Formulário de Registro */
+.register-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.register-form__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.register-form__button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.register-form__button:hover {
+    background-color: var(--secondary-color-dark);
+    /* Use the darker shade */
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 15px;
+}

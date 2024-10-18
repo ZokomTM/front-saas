@@ -1,0 +1,92 @@
+/* Estilos básicos para centralizar o conteúdo */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    /* Cor de fundo para contraste */
+}
+
+select,
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #000;
+    /* Adiciona borda */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+}
+
+button {
+    background-color: #007bff;
+    /* Cor de fundo do botão */
+    color: #fff;
+    /* Cor do texto do botão */
+    transition: background-color 0.3s ease;
+    /* Animação ao passar o mouse */
+}
+
+button:hover {
+    background-color: #0056b3;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    /* Largura do retângulo */
+    height: 300px;
+    /* Altura do retângulo */
+    background-color: #fff;
+    /* Cor de fundo interna */
+    border: 2px solid #000;
+    /* Adiciona borda à div centralizada */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Sombra para destaque */
+    position: relative;
+    /* Necessário para posicionamento absoluto do botão */
+}
+
+select {
+    width: calc(100% - 40px);
+    /* Largura quase total da div centralizada */
+}
+
+input {
+    width: calc(100% - 40px);
+    height: 10%;
+    /* Largura quase total da div centralizada */
+}
+
+.info-bubble {
+    /* margin-top: 10px; */
+    padding: 10px;
+    margin-bottom: 45px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+        width: calc(100% - 40px);
+}
+
+.button-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
