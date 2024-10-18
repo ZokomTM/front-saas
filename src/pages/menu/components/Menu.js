@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Menu.css";
 import { Link } from "react-router-dom";
 import Footer from "../../geral/components/Footer";
 
 const Menu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const token_empresa = localStorage.getItem("token_empresa");
+
+    if (!token || !token_empresa) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);

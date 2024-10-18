@@ -8,12 +8,13 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false); // Estado de carregamento
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
     setMessage("");
+    setLoading(true); // Inicia o carregamento
 
     const userData = {
       username: username,
@@ -25,12 +26,16 @@ const Login = () => {
       navigate("/select-tenant");
     } catch (error) {
       setMessage(`Erro: ${error.message}`);
+    } finally {
+      setLoading(false); // Termina o carregamento
     }
   };
 
   return (
     <div className="login-container">
-      <div className="login-box">
+      {loading && <div className="loading-spinner"></div>}{" "}
+      {/* Animação de carregamento */}
+      <div className={`login-box ${loading ? "loading" : ""}`}>
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
           <div className="input-group">
@@ -49,7 +54,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" disabled={loading}>
             Logar
           </button>
         </form>

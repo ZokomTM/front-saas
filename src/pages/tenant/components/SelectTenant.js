@@ -10,6 +10,12 @@ const Select = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/");
+    }
+
     const getItems = async () => {
       try {
         const data = await getTenantsByUser();
@@ -20,7 +26,7 @@ const Select = () => {
     };
 
     getItems();
-  }, []);
+  }, [navigate]);
 
   const handleProceed = async () => {
     try {
@@ -54,8 +60,16 @@ const Select = () => {
 
       {selectedTenant && (
         <div className="info-bubble">
-          <p>Servidor: {selectedTenant.servidor}</p>
-          <p>Usuário Responsável: {selectedTenant.usuario_responsavel}</p>
+          <p>
+            Servidor:{" "}
+            <span className="black-text">{selectedTenant.servidor}</span>
+          </p>
+          <p>
+            Usuário Responsável:{" "}
+            <span className="black-text">
+              {selectedTenant.usuario_responsavel}
+            </span>
+          </p>
         </div>
       )}
 
