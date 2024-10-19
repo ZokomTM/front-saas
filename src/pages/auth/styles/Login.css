@@ -3,7 +3,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 60vh;
     text-align: center;
     box-sizing: border-box;
 }
@@ -50,6 +50,15 @@
     text-align: center;
     margin-top: 25px;
     /* Adicione esta linha */
+}
+
+.login-form__label {
+    display: block;
+    text-align: left;
+    font-size: 1.2em;
+    /* Aumenta o tamanho da fonte */
+    margin-bottom: 5px;
+    /* Espaço entre o label e o input */
 }
 
 .loading-spinner {

@@ -38,6 +38,9 @@ const Login = () => {
       <div className={`login-box ${loading ? "loading" : ""}`}>
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
+          <label htmlFor="confirmPassword" className="login-form__label">
+            Usuário/E-mail
+          </label>
           <div className="input-group">
             <input
               type="text"
@@ -46,6 +49,9 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
+          <label htmlFor="confirmPassword" className="login-form__label">
+            Senha
+          </label>
           <div className="input-group">
             <input
               type="password"

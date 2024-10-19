@@ -10,12 +10,17 @@ export const registerUser = async (userData) => {
       body: JSON.stringify(userData),
     });
 
-    console.log(userData);
-    console.log(JSON.stringify(userData));
-
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Erro ao registrar");
+      let errorData;
+      try {
+        errorData = await response.json();
+      } catch (jsonError) {
+        throw new Error("Erro ao registrar");
+      }
+      // console.error(
+      //   `Error ${response.status}: ${errorData.error || "Erro ao registrar"}`
+      // );
+      throw new Error(errorData.error || "Erro ao registrar");
     }
 
     return await response.json();
@@ -28,7 +33,7 @@ export const loginUser = async (userData) => {
   try {
     // Verifique se userData contém username e password
     if (!userData.username || !userData.password) {
-      throw new Error("Username e password são obrigatórios");
+      throw new Error("Usuário e Senha são obrigatórios");
     }
 
     console.log(userData);
