@@ -3,18 +3,29 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Menu.css";
 import { Link } from "react-router-dom";
 import Footer from "../../geral/components/Footer";
+import { validToken } from "../../../api/authService";
 
 const Menu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const token_empresa = localStorage.getItem("token_empresa");
+    const checkTokens = async () => {
+      try {
+        const token_empresa = localStorage.getItem("token_empresa");
 
-    if (!token || !token_empresa) {
-      navigate("/");
-    }
+        if (!token_empresa) {
+          navigate("/");
+          return;
+        }
+
+        await validToken(token_empresa);
+      } catch (error) {
+        navigate("/");
+      }
+    };
+
+    checkTokens();
   }, [navigate]);
 
   const toggleDropdown = () => {

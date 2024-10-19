@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getTenantsByUser, selectTenant } from "../../../api/tenantService";
+import { validToken } from "../../../api/authService";
 import "../styles/SelectTenant.css";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../geral/components/Footer";
@@ -13,7 +14,7 @@ const Select = () => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      navigate("/");
+      navigate("/login");
     }
 
     const getItems = async () => {
@@ -21,7 +22,11 @@ const Select = () => {
         const data = await getTenantsByUser();
         setItems(data);
       } catch (error) {
-        console.error("Error fetching items:", error);
+        try {
+          await validToken(token);
+        } catch (error) {
+          navigate("/login");
+        }
       }
     };
 

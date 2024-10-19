@@ -17,9 +17,6 @@ export const registerUser = async (userData) => {
       } catch (jsonError) {
         throw new Error("Erro ao registrar");
       }
-      // console.error(
-      //   `Error ${response.status}: ${errorData.error || "Erro ao registrar"}`
-      // );
       throw new Error(errorData.error || "Erro ao registrar");
     }
 
@@ -35,8 +32,6 @@ export const loginUser = async (userData) => {
     if (!userData.username || !userData.password) {
       throw new Error("Usuário e Senha são obrigatórios");
     }
-
-    console.log(userData);
 
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
@@ -54,9 +49,27 @@ export const loginUser = async (userData) => {
     const data = await response.json();
     localStorage.setItem("token", data.token);
 
-    console.log(data.token);
-
     return data;
+  } catch (error) {
+    throw new Error(error.message || "Erro na rede");
+  }
+};
+
+export const validToken = async (token) => {
+  try {
+    const response = await fetch(`${API_URL}/auth/valid`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Não validado");
+    }
+
+    return "Validado";
   } catch (error) {
     throw new Error(error.message || "Erro na rede");
   }
